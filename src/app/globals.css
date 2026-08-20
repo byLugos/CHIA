@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@theme {
+  /* Superficies */
+  --color-paper: #e8eae1;
+  --color-board: #f6f5ee;
+  --color-ink: #1f2421;
+  --color-ink-soft: #4a5049;
+  --color-line: #c9c2ae;
+
+  /* Marca CHIA */
+  --color-brand: #1f6f5c;
+  --color-brand-dark: #14483d;
+  --color-highlight: #c99a2e;
+
+  /* Etiquetas por área (colores de "pestaña de carpeta") */
+  --color-clay: #b65c4a;
+  --color-forest: #2f7355;
+  --color-tag-indigo: #3b4c7a;
+  --color-tag-teal: #1f8a8c;
+  --color-plum: #7a4b8a;
+  --color-mustard: #c08a2e;
+  --color-violet: #5b4fe8;
+  --color-coral: #e2704f;
+
+  --font-display: var(--font-bitter), Georgia, serif;
+  --font-sans: var(--font-plex-sans), system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), monospace;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+}
+
+/* Textura sutil de "corcho de tablero" en el fondo */
+.board-texture {
+  background-image: radial-gradient(var(--color-line) 0.5px, transparent 0.5px);
+  background-size: 14px 14px;
+  background-position: 0 0;
+  opacity: 0.35;
+}
+
+/* Elemento firma: tarjeta con forma de etiqueta de ferretería colgada de una perforación */
+.peg-tag {
+  position: relative;
+  clip-path: polygon(
+    0% 10%,
+    42% 10%,
+    46% 0%,
+    54% 0%,
+    58% 10%,
+    100% 10%,
+    100% 100%,
+    0% 100%
+  );
+  padding-top: 1.75rem;
+}
+
+.peg-tag::before {
+  content: "";
+  position: absolute;
+  top: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 9999px;
+  background-color: var(--color-paper);
+  border: 1px solid var(--color-line);
+}
