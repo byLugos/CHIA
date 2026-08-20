@@ -26,6 +26,22 @@ export const videos: VideoDocente[] = [
     areaNombre: "Inglés",
     descripcion: "LyricFluent es una aplicación educativa que transforma las canciones en clases de idiomas. A través de las letras de canciones en inglés, francés, portugués e italiano, los estudiantes practican vocabulario, gramática, pronunciación y comprensión auditiva de manera natural y motivadora.",
   },
+  {
+    id: "zbUCnnj6V_4",
+    titulo: "LingoClip: Idiomas en pequeñas dosis",
+    docente: "Prof. Carmen Puche",
+    areaSlug: "ingles",
+    areaNombre: "Inglés",
+    descripcion: "LingoClip es una aplicación educativa que enseña idiomas a través de videos cortos y clips reales. Los estudiantes practican vocabulario, expresiones cotidianas, pronunciación y comprensión auditiva viendo contenido breve y dinámico, similar al formato de los videos que ya consumen a diario.",
+  },
+  {
+    id: "jaSgFVnqi3w",
+    titulo: "LearnEnglish Podcast: inglés para escuchar y aprender",
+    docente: "Prof. Carmen Puche",
+    areaSlug: "ingles",
+    areaNombre: "Inglés",
+    descripcion: "LearnEnglish Podcast es un recurso educativo que enseña inglés a través de episodios de audio pensados para practicar comprensión auditiva, vocabulario y pronunciación. Los estudiantes escuchan conversaciones, historias o temas variados en inglés, mejorando su oído y fluidez de forma progresiva y a su propio ritmo.",
+  },
 ];
 
 export function getAreasDisponibles(): string[] {
