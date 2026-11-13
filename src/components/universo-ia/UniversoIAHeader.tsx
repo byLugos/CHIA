@@ -13,8 +13,9 @@ export default function UniversoIAHeader() {
         </h1>
 
         <p className="mt-8 max-w-2xl text-base leading-7 text-ink-soft sm:text-lg">
-          Explora herramientas de inteligencia artificial para crear audio,
-          video, presentaciones e imágenes y descubre nuevas posibilidades
+          Explora herramientas de inteligencia artificial para planear tus
+          clases y crear audio, video, presentaciones e imágenes, y descubre
+          nuevas posibilidades
           para enriquecer las experiencias de aprendizaje.
         </p>
       </div>

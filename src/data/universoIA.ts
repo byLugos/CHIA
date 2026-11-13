@@ -9,6 +9,44 @@ export type CategoriaIA = {
 
 export const categoriasIA: CategoriaIA[] = [
   {
+    slug: "asistentes",
+    nombre: "Asistentes para docentes",
+    descripcion:
+      "IA para planear clases, estudiar documentos y escribir mejores instrucciones (prompts).",
+    herramientas: [
+      {
+        // Del PDF de herramientas (#6)
+        nombre: "NotebookLM",
+        descripcion:
+          "Asistente de Google que estudia tus documentos y los convierte en resúmenes en audio tipo pódcast, guías de estudio y mapas mentales.",
+        url: "https://notebook.google/",
+        etiqueta: "Gratis",
+      },
+      {
+        // Del PDF de herramientas (#8)
+        nombre: "Founderz",
+        descripcion:
+          "Generador gratuito de prompts para docentes: arma instrucciones listas para usar en ChatGPT y otras IA según tu clase.",
+        url: "https://founderz.com/es/herramientas/generador-prompts-docentes/",
+        etiqueta: "Gratis",
+      },
+      {
+        // De la lista de videos de Drive. TODO: falta enlace y descripción
+        nombre: "FlexiTeacher",
+        descripcion: "Asistente de inteligencia artificial para docentes.",
+        url: "",
+      },
+      {
+        // De la lista de videos de Drive. TODO: confirmar enlace y descripción
+        nombre: "Códigos cortos ChatGPT",
+        descripcion:
+          "Atajos (códigos cortos) para pedirle a ChatGPT tareas frecuentes de clase de forma rápida y ordenada.",
+        url: "https://chatgpt.com/",
+        etiqueta: "Freemium",
+      },
+    ],
+  },
+  {
     slug: "audio",
     nombre: "Audio",
     descripcion:

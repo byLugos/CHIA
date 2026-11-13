@@ -1,49 +1,14 @@
 import type { CategoriaIA } from "@/data/universoIA";
-import type { Tool } from "@/data/areas";
+import ToolCard from "@/components/ui/ToolCard";
+import { getToolSlug, videosDeHerramienta } from "@/lib/herramientas";
 
 interface CategoriaIACardProps {
   categoria: CategoriaIA;
 }
 
-function ToolCard({ tool }: { tool: Tool }) {
+export default function CategoriaIACard({ categoria }: CategoriaIACardProps) {
   return (
-    <a
-      href={tool.url}
-      target="_blank"
-      rel="noreferrer"
-      className="group border border-line bg-paper p-5 transition-all hover:-translate-y-1 hover:border-brand hover:shadow-[4px_4px_0_var(--color-line)]"
-    >
-      <div className="flex items-start justify-between gap-3">
-        <h3 className="font-display text-xl font-bold text-ink">
-          {tool.nombre}
-        </h3>
-
-        <span
-          aria-hidden="true"
-          className="font-mono text-xs text-ink-soft transition-transform group-hover:translate-x-1"
-        >
-          ↗
-        </span>
-      </div>
-
-      <p className="mt-3 text-sm leading-6 text-ink-soft">
-        {tool.descripcion}
-      </p>
-
-      {tool.etiqueta && (
-        <span className="mt-5 inline-block font-mono text-[12px] uppercase tracking-widest text-brand">
-          {tool.etiqueta}
-        </span>
-      )}
-    </a>
-  );
-}
-
-export default function CategoriaIACard({
-  categoria,
-}: CategoriaIACardProps) {
-  return (
-    <section className="border border-line bg-board">
+    <section id={categoria.slug} className="scroll-mt-28 border border-line bg-board">
       <div className="h-2 w-full bg-brand" />
 
       <div className="p-6 lg:p-8">
@@ -64,9 +29,17 @@ export default function CategoriaIACard({
         </div>
 
         <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {categoria.herramientas.map((tool) => (
-            <ToolCard key={tool.nombre} tool={tool} />
-          ))}
+          {categoria.herramientas.map((tool) => {
+            const slug = getToolSlug(tool);
+            return (
+              <ToolCard
+                key={slug}
+                tool={tool}
+                href={`/universo-ia/${slug}`}
+                tieneVideo={videosDeHerramienta(slug).length > 0}
+              />
+            );
+          })}
         </div>
       </div>
     </section>

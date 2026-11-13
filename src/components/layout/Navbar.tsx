@@ -1,8 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { asset } from "@/lib/rutas";
+import { sitio } from "@/data/sitio";
 
 const navigation = [
   { href: "/", label: "Inicio" },
@@ -26,9 +29,15 @@ export default function Navbar() {
           aria-label="CHIA - Inicio"
           onClick={() => setAbierto(false)}
         >
-          <div className="flex h-11 w-11 items-center justify-center border-2 border-brand bg-brand font-display text-xl font-bold text-board transition-transform group-hover:-rotate-2">
-            C
-          </div>
+          {/* LOGO: se cambia en src/data/sitio.ts → logos.simbolo */}
+          <Image
+            src={asset(sitio.logos.simbolo)}
+            alt=""
+            width={64}
+            height={57}
+            priority
+            className="h-14 w-auto transition-transform group-hover:-rotate-2"
+          />
 
           <div className="hidden sm:block">
             <p className="font-display text-xl font-bold tracking-tight text-ink">
@@ -95,7 +104,10 @@ export default function Navbar() {
       >
         <ul className="flex flex-col px-6 py-2">
           {navigation.map((item) => {
-            const activo = pathname === item.href;
+            const activo =
+              item.href === "/"
+                ? pathname === "/"
+                : pathname === item.href || pathname.startsWith(`${item.href}/`);
             return (
               <li key={item.href} className="border-b border-line last:border-b-0">
                 <Link

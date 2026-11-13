@@ -1,3 +1,5 @@
+import { sitio } from "@/data/sitio";
+
 export default function VideosHeader() {
   return (
     <section className="border-b border-line bg-board">
@@ -17,6 +19,22 @@ export default function VideosHeader() {
           en diferentes contextos de aprendizaje y descubre nuevas formas de
           integrarlas en el aula.
         </p>
+
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <a
+            href={sitio.carpetaVideosDrive}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-3 bg-brand px-5 py-3 font-mono text-xs uppercase tracking-wide text-board transition-colors hover:bg-brand-dark"
+          >
+            <span aria-hidden="true">↓</span>
+            Descargar los videos desde Google Drive
+          </a>
+          <p className="text-xs leading-5 text-ink-soft sm:max-w-xs">
+            Cada video también tiene sus propios botones para verlo o
+            descargarlo.
+          </p>
+        </div>
       </div>
     </section>
   );

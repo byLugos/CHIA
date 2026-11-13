@@ -1,4 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
+import { asset } from "@/lib/rutas";
+import { sitio } from "@/data/sitio";
 
 export default function Hero() {
   return (
@@ -42,8 +45,18 @@ export default function Hero() {
 
         <div className="relative mx-auto w-full max-w-sm lg:max-w-md">
           <div className="peg-tag rotate-2 border border-line bg-board px-8 pb-12 shadow-[8px_8px_0_var(--color-line)]">
+            {/* LOGO: se cambia en src/data/sitio.ts → logos.simbolo */}
+            <Image
+              src={asset(sitio.logos.simbolo)}
+              alt="Logo de CHIA"
+              width={640}
+              height={566}
+              priority
+              sizes="(min-width: 1024px) 360px, 80vw"
+              className="mx-auto mt-6 h-auto w-full max-w-[300px]"
+            />
 
-            <h2 className="mt-8 font-display text-4xl font-bold leading-tight text-brand">
+            <h2 className="mt-6 font-display text-4xl font-bold leading-tight text-brand">
               Caja de
               <br />
               herramientas

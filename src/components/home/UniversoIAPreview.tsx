@@ -1,16 +1,6 @@
+import Link from "next/link";
 import { categoriasIA } from "@/data/universoIA";
 import SectionHeading from "@/components/ui/SectionHeading";
-
-const categoryNumbers: Record<string, string> = {
-  audio: "01",
-  video: "02",
-  presentaciones: "03",
-  imagenes: "04",
-};
-
-function getCategoryNumber(slug: string) {
-  return categoryNumbers[slug] ?? "00";
-}
 
 export default function UniversoIAPreview() {
   return (
@@ -18,19 +8,20 @@ export default function UniversoIAPreview() {
       <SectionHeading
         eyebrow="02 / Universo IA"
         title="La inteligencia artificial también tiene un lugar en el aula."
-        description="Descubre herramientas de IA para crear audio, video, presentaciones e imágenes."
+        description="Descubre herramientas de IA para planear tus clases y crear audio, video, presentaciones e imágenes."
         href="/universo-ia"
         linkLabel="Explorar Universo IA"
       />
 
-      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {categoriasIA.map((categoria) => (
-          <article
+      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+        {categoriasIA.map((categoria, index) => (
+          <Link
             key={categoria.slug}
-            className="border border-line bg-board p-6"
+            href={`/universo-ia#${categoria.slug}`}
+            className="border border-line bg-board p-6 transition-all hover:-translate-y-1 hover:border-brand hover:shadow-[4px_4px_0_var(--color-line)]"
           >
             <span className="font-mono text-3xl text-highlight">
-              {getCategoryNumber(categoria.slug)}
+              {String(index + 1).padStart(2, "0")}
             </span>
 
             <h3 className="mt-8 font-display text-2xl font-bold text-ink">
@@ -40,7 +31,7 @@ export default function UniversoIAPreview() {
             <p className="mt-3 text-sm leading-6 text-ink-soft">
               {categoria.descripcion}
             </p>
-          </article>
+          </Link>
         ))}
       </div>
     </section>

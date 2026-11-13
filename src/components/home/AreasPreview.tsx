@@ -1,16 +1,7 @@
+import Link from "next/link";
 import { areas } from "@/data/areas";
 import SectionHeading from "@/components/ui/SectionHeading";
-
-const areaColors: Record<string, string> = {
-  clay: "bg-clay",
-  forest: "bg-forest",
-  indigo: "bg-tag-indigo",
-  teal: "bg-tag-teal",
-  plum: "bg-plum",
-  mustard: "bg-mustard",
-  violet: "bg-violet",
-  coral: "bg-coral",
-};
+import { getAreaColor } from "@/lib/colores";
 
 export default function AreasPreview() {
   return (
@@ -26,11 +17,12 @@ export default function AreasPreview() {
 
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {areas.map((area) => (
-            <article
+            <Link
               key={area.slug}
-              className="border border-line bg-paper p-6"
+              href={`/areas/${area.slug}`}
+              className="group border border-line bg-paper p-6 transition-all hover:-translate-y-1 hover:border-brand hover:shadow-[4px_4px_0_var(--color-line)]"
             >
-              <div className={`mb-8 h-2 w-16 ${areaColors[area.color] ?? "bg-brand"}`} />
+              <div className={`mb-8 h-2 w-16 transition-all group-hover:w-24 ${getAreaColor(area.color)}`} />
 
               <h3 className="font-display text-2xl font-bold text-ink">
                 {area.nombre}
@@ -39,7 +31,7 @@ export default function AreasPreview() {
               <p className="mt-3 text-sm leading-6 text-ink-soft">
                 {area.resumen}
               </p>
-            </article>
+            </Link>
           ))}
         </div>
       </div>

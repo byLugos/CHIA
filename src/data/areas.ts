@@ -1,8 +1,28 @@
+// Documento PDF de apoyo de una herramienta.
+// Usa "archivo" para un PDF guardado en /public/pdfs (ej: "/pdfs/geogebra.pdf")
+// o "drive" para un PDF en Google Drive (id o enlace completo).
+export type DocumentoPDF = {
+  titulo?: string;
+  archivo?: string;
+  drive?: string;
+};
+
 export type Tool = {
+  // Opcional: si no se pone, se genera a partir del nombre ("GeoGebra" → "geogebra").
+  // Es la parte final de la URL: /areas/matematicas/geogebra
+  slug?: string;
   nombre: string;
   descripcion: string;
+  // Enlace a la herramienta. Si aún no se tiene, se deja vacío ("") y en su
+  // página aparece "Enlace próximamente" en lugar del botón.
   url: string;
   etiqueta?: string; // ej: "Gratis", "Freemium", "Requiere cuenta"
+  // Logo de la herramienta. Guárdalo en /public/herramientas y pon la ruta,
+  // ej: "/herramientas/geogebra.png". También acepta un enlace https.
+  // Si no hay logo, se muestra el ícono del sitio web de la herramienta.
+  logo?: string;
+  // Guía en PDF (opcional). Si no hay, se muestra el espacio "Próximamente".
+  pdf?: DocumentoPDF;
 };
 
 export type SubArea = {
@@ -54,6 +74,22 @@ export const areas: Area[] = [
         url: "https://www.wdl.org/",
         etiqueta: "Gratis",
       },
+      {
+        // Del PDF de herramientas (#12)
+        nombre: "Colombia Aprende",
+        descripcion:
+          "Portal del Ministerio de Educación con colecciones de recursos educativos digitales por área y grado.",
+        url: "https://colombiaaprende.edu.co/recurso-coleccion",
+        etiqueta: "Gratis",
+      },
+      {
+        // Del PDF de herramientas (#14). TODO: confirmar área y URL
+        nombre: "Didactalia",
+        descripcion:
+          "Comunidad con miles de recursos educativos: mapas interactivos, juegos y actividades para el aula.",
+        url: "https://didactalia.net/",
+        etiqueta: "Gratis",
+      },
     ],
   },
   {
@@ -62,6 +98,17 @@ export const areas: Area[] = [
     color: "forest",
     resumen:
       "Simuladores y laboratorios virtuales agrupados por disciplina: Biología, Química y Física.",
+    // Herramientas que sirven para todas las ciencias
+    herramientas: [
+      {
+        // Del PDF de herramientas (#7)
+        nombre: "CK-12",
+        descripcion:
+          "Libros digitales, simulaciones y práctica adaptativa gratuita de ciencias y matemáticas, con espacio para docentes.",
+        url: "https://www.ck12.org/teacher/",
+        etiqueta: "Gratis",
+      },
+    ],
     subareas: [
       {
         slug: "biologia",
@@ -78,6 +125,15 @@ export const areas: Area[] = [
             descripcion: "Modelo 3D del cuerpo humano para explorar anatomía y sistemas.",
             url: "https://www.biodigital.com/",
             etiqueta: "Freemium",
+          },
+          {
+            // Del PDF de herramientas (#5). En la lista de Drive aparece como
+            // "Libro de química": TODO confirmar si es biología o química.
+            nombre: "Libro de Biología",
+            descripcion:
+              "App de LiteraturApps con un libro de biología para estudiar desde el celular, organizado por temas.",
+            url: "https://play.google.com/store/apps/details?id=biology.book",
+            etiqueta: "App Android",
           },
         ],
       },
@@ -171,6 +227,23 @@ export const areas: Area[] = [
         url: "https://quizlet.com/",
         etiqueta: "Freemium",
       },
+      {
+        // Del PDF de herramientas (#2)
+        nombre: "Write & Improve",
+        descripcion:
+          "Herramienta de Cambridge para practicar la escritura en inglés con corrección y retroalimentación al instante.",
+        url: "https://writeandimprove.com/",
+        etiqueta: "Gratis",
+      },
+      {
+        // Del PDF de herramientas (#3). Estaba en Pasatiempos; en la lista de
+        // Drive va en Inglés.
+        nombre: "Baamboozle",
+        descripcion:
+          "Juegos de preguntas por equipos para repasar vocabulario y estructuras de forma divertida.",
+        url: "https://www.baamboozle.com/",
+        etiqueta: "Gratis",
+      },
     ],
   },
   {
@@ -198,6 +271,14 @@ export const areas: Area[] = [
         url: "https://jamboard.google.com/",
         etiqueta: "Gratis",
       },
+      {
+        // Del PDF de herramientas (#10). TODO: confirmar área
+        nombre: "Canva Design School",
+        descripcion:
+          "Cursos y tutoriales gratuitos de Canva para aprender diseño y crear materiales de clase más claros y atractivos.",
+        url: "https://www.canva.com/es_419/design-school/",
+        etiqueta: "Gratis",
+      },
     ],
   },
   {
@@ -210,7 +291,7 @@ export const areas: Area[] = [
       {
         nombre: "GeoGebra",
         descripcion: "Geometría dinámica, álgebra y cálculo en un solo entorno visual.",
-        url: "https://www.geogebra.org/?lang=es",
+        url: "https://www.geogebra.org/math",
         etiqueta: "Gratis",
       },
       {
@@ -224,6 +305,12 @@ export const areas: Area[] = [
         descripcion: "Ejercicios secuenciados y video-explicaciones por nivel escolar.",
         url: "https://es.khanacademy.org/",
         etiqueta: "Gratis",
+      },
+      {
+        // Del PDF de herramientas (#13). TODO: el PDF no trae enlace ni descripción
+        nombre: "Mathcenter",
+        descripcion: "Recursos y práctica para el aprendizaje de las matemáticas.",
+        url: "",
       },
     ],
   },

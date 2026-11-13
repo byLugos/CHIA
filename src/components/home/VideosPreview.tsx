@@ -1,4 +1,4 @@
-import { videos } from "@/data/videos";
+import { videos, claveVideo } from "@/data/videos";
 
 import SectionHeading from "@/components/ui/SectionHeading";
 
@@ -18,7 +18,7 @@ export default function VideosPreview() {
       <div className="mt-10 grid gap-4 lg:grid-cols-3">
         {featuredVideos.map((video) => (
           <article
-            key={`${video.id}-${video.titulo}`}
+            key={claveVideo(video)}
             className="border border-line bg-board p-5"
           >
             <p className="font-mono text-[9px] uppercase tracking-widest text-brand">
@@ -29,9 +29,9 @@ export default function VideosPreview() {
               {video.titulo}
             </h3>
 
-            <p className="mt-2 text-xs text-ink-soft">
-              {video.docente}
-            </p>
+            {video.docente && (
+              <p className="mt-2 text-xs text-ink-soft">{video.docente}</p>
+            )}
           </article>
         ))}
       </div>

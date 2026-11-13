@@ -3,7 +3,7 @@
 
 import { useMemo, useState } from "react";
 import VideoCard from "@/components/videos/VideoCard";
-import type { VideoDocente } from "@/data/videos";
+import { claveVideo, type VideoDocente } from "@/data/videos";
 
 interface VideoFiltersProps {
   videos: VideoDocente[];
@@ -48,7 +48,7 @@ export default function VideoFilters({ videos }: VideoFiltersProps) {
       {videosFiltrados.length > 0 ? (
         <div className="mt-8 grid gap-6 lg:grid-cols-2">
           {videosFiltrados.map((video) => (
-            <VideoCard key={`${video.id}-${video.titulo}`} video={video} />
+            <VideoCard key={claveVideo(video)} video={video} />
           ))}
         </div>
       ) : (
