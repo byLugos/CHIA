@@ -5,7 +5,7 @@ import type { NextConfig } from "next";
 // - basePath: todas las rutas cuelgan de /RutaTic (también en local:
 //   http://localhost:3000/RutaTic)
 // Si algún día cambias de repositorio o de dominio, solo cambia BASE_PATH.
-const BASE_PATH = "/RutaTic";
+const BASE_PATH = "/CHIA";
 
 const nextConfig: NextConfig = {
   reactCompiler: true,

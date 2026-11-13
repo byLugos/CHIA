@@ -6,7 +6,7 @@ export const sitio = {
   lema: "Educación que conecta",
   correo: "chiatoolkit@gmail.com",
   // URL pública del sitio (la usa el código QR del sitio)
-  url: "https://bylugos.github.io/RutaTic/",
+  url: "https://bylugos.github.io/CHIA/",
   // Carpeta pública de Google Drive con todos los videos
   // (debe estar compartida como "Cualquier persona con el enlace").
   carpetaVideosDrive:
