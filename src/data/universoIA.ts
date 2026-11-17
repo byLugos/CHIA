@@ -61,7 +61,7 @@ export const categoriasIA: CategoriaIA[] = [
       {
         nombre: "Suno",
         descripcion: "Generación de canciones originales a partir de una descripción de texto.",
-        url: "https://suno.com/",
+        url: "https://suno.com/discover",
         etiqueta: "Freemium",
       },
       {

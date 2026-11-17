@@ -54,7 +54,6 @@ export const videos: VideoDocente[] = [
     areaNombre: "Pasatiempos",
   },
   {
-    // TODO: este enlace de Drive es el mismo de Anatomy 3D Atlas: pendiente que el profe revise cuál es el correcto
     youtube: "https://www.youtube.com/watch?v=bkSvOzyn5Hk",
     drive: "https://drive.google.com/file/d/1pXCnEWCGSbWLmwixVAb1lWudNhsD9QWh/view",
     herramienta: "libro-de-biologia",
@@ -111,9 +110,8 @@ export const videos: VideoDocente[] = [
     areaNombre: "Pasatiempos",
   },
   {
-    // TODO: este enlace de Drive es el mismo de Libro de Biología: pendiente que el profe revise cuál es el correcto
     youtube: "https://www.youtube.com/watch?v=LW78j_4ENTo",
-    drive: "https://drive.google.com/file/d/1pXCnEWCGSbWLmwixVAb1lWudNhsD9QWh/view",
+    drive: "https://drive.google.com/file/d/1nB1RLJm5vX8Puyf4Z66_VzcdviOeD2ig/view",
     herramienta: "anatomy-3d-atlas",
     titulo: "Anatomy 3D Atlas",
     areaSlug: "ciencias-naturales",
@@ -200,12 +198,20 @@ export const videos: VideoDocente[] = [
     areaNombre: "Pasatiempos",
   },
   {
-    // TODO: esperando los enlaces nuevos de Desmos
+    youtube: "https://www.youtube.com/shorts/sQb6pCJkwqA",
     drive: "https://drive.google.com/file/d/1lngYz8TINc8dMS-um4-E7wpRrqtk1pI_/view",
     herramienta: "desmos",
     titulo: "Desmos",
     areaSlug: "matematicas",
     areaNombre: "Matemáticas",
+  },
+  {
+    youtube: "https://www.youtube.com/watch?v=1Vl96HvZU0o",
+    drive: "https://drive.google.com/file/d/1GlplV0PSTLJGlIduPaK7CyK5YJpywePq/view",
+    herramienta: "suno",
+    titulo: "Suno",
+    areaSlug: "universo-ia",
+    areaNombre: "Universo IA",
   },
 ];
 
