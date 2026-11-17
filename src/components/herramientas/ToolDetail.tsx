@@ -76,7 +76,9 @@ export default function ToolDetail({ herramienta }: { herramienta: HerramientaUb
               )}
             </div>
 
-            {videoPrincipal && (
+            {/* El título del video solo se muestra si dice algo distinto al nombre de la herramienta */}
+            {videoPrincipal &&
+              (videoPrincipal.titulo !== tool.nombre || videoPrincipal.docente) && (
               <div className="mt-6">
                 <h2 className="font-display text-2xl font-bold leading-tight text-ink">
                   {videoPrincipal.titulo}
