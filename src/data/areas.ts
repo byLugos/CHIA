@@ -17,6 +17,9 @@ export type Tool = {
   // página aparece "Enlace próximamente" en lugar del botón.
   url: string;
   etiqueta?: string; // ej: "Gratis", "Freemium", "Requiere cuenta"
+  // Enlace opcional para descargar la app (Google Play, App Store…).
+  // Aparece como un segundo botón "Descargar la app" en la página de la herramienta.
+  app?: string;
   // Logo de la herramienta. Guárdalo en /public/herramientas y pon la ruta,
   // ej: "/herramientas/geogebra.png". También acepta un enlace https.
   // Si no hay logo, se muestra el ícono del sitio web de la herramienta.
@@ -98,17 +101,6 @@ export const areas: Area[] = [
     color: "forest",
     resumen:
       "Simuladores y laboratorios virtuales agrupados por disciplina: Biología, Química y Física.",
-    // Herramientas que sirven para todas las ciencias
-    herramientas: [
-      {
-        // Del PDF de herramientas (#7)
-        nombre: "CK-12",
-        descripcion:
-          "Libros digitales, simulaciones y práctica adaptativa gratuita de ciencias y matemáticas, con espacio para docentes.",
-        url: "https://www.ck12.org/teacher/",
-        etiqueta: "Gratis",
-      },
-    ],
     subareas: [
       {
         slug: "biologia",
@@ -123,17 +115,22 @@ export const areas: Area[] = [
           {
             nombre: "BioDigital Human",
             descripcion: "Modelo 3D del cuerpo humano para explorar anatomía y sistemas.",
-            url: "https://www.biodigital.com/",
+            url: "https://human.biodigital.com/login?returnUrl=/explore",
             etiqueta: "Freemium",
           },
           {
-            // Del PDF de herramientas (#5). En la lista de Drive aparece como
-            // "Libro de química": TODO confirmar si es biología o química.
             nombre: "Libro de Biología",
             descripcion:
               "App de LiteraturApps con un libro de biología para estudiar desde el celular, organizado por temas.",
             url: "https://play.google.com/store/apps/details?id=biology.book",
             etiqueta: "App Android",
+          },
+          {
+            nombre: "Anatomy 3D Atlas",
+            descripcion:
+              "Atlas de anatomía humana en 3D para explorar huesos, músculos y órganos desde cualquier ángulo.",
+            url: "https://anatomy3datlas.com/",
+            etiqueta: "Freemium",
           },
         ],
       },
@@ -152,6 +149,14 @@ export const areas: Area[] = [
             descripcion: "Editor y visualizador de moléculas en 2D y 3D.",
             url: "https://molview.org/",
             etiqueta: "Gratis",
+          },
+          {
+            nombre: "Unrealchemist",
+            descripcion:
+              "Juego de química para combinar elementos, descubrir compuestos y aprender cómo reaccionan.",
+            url: "https://www.unrealchemist.com/",
+            app: "https://play.google.com/store/apps/details?id=com.PixelMiller.UnrealChemist",
+            etiqueta: "App Android",
           },
         ],
       },
@@ -182,12 +187,6 @@ export const areas: Area[] = [
     resumen:
       "Recursos para lectura crítica, producción escrita y análisis literario.",
     herramientas: [
-      {
-        nombre: "StoryboardThat",
-        descripcion: "Creación de historietas y storyboards para narrativa y comprensión lectora.",
-        url: "https://www.storyboardthat.com/es",
-        etiqueta: "Freemium",
-      },
       {
         nombre: "Genially",
         descripcion: "Presentaciones y textos interactivos para análisis de obras literarias.",
@@ -236,12 +235,18 @@ export const areas: Area[] = [
         etiqueta: "Gratis",
       },
       {
-        // Del PDF de herramientas (#3). Estaba en Pasatiempos; en la lista de
-        // Drive va en Inglés.
         nombre: "Baamboozle",
         descripcion:
           "Juegos de preguntas por equipos para repasar vocabulario y estructuras de forma divertida.",
         url: "https://www.baamboozle.com/",
+        etiqueta: "Gratis",
+      },
+      {
+        // TODO: confirmar área (es una biblioteca de cuentos en varios idiomas)
+        nombre: "StoryWeaver",
+        descripcion:
+          "Biblioteca gratuita de cuentos ilustrados en inglés y muchos otros idiomas, para leer, escuchar y traducir.",
+        url: "https://storyweaver.org.in/en",
         etiqueta: "Gratis",
       },
     ],

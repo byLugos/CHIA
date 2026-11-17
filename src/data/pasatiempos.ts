@@ -8,7 +8,7 @@ export const pasatiempos: Pasatiempo[] = [
     nombre: "Kahoot!",
     descripcion:
       "Concursos y trivias en vivo para repasar contenido de cualquier área de forma lúdica.",
-    url: "https://kahoot.com/",
+    url: "https://kahoot.it/",
     etiqueta: "Freemium",
     logo:
       "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Kahoot_Logo.svg/1280px-Kahoot_Logo.svg.png?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=thumbnail",
@@ -66,8 +66,7 @@ export const pasatiempos: Pasatiempo[] = [
     etiqueta: "Gratis",
   },
   {
-    // Del PDF de herramientas (#4). El PDF no trae enlace: se usa la ficha de
-    // Google Play de "AZ Screen Recorder". TODO: confirmar que es la app correcta
+    // La lista no trae enlace: se usa la ficha de "AZ Screen Recorder" en Google Play
     nombre: "AZ Screen Recorder",
     slug: "az-screen",
     descripcion:

@@ -31,13 +31,13 @@ export const categoriasIA: CategoriaIA[] = [
         etiqueta: "Gratis",
       },
       {
-        // De la lista de videos de Drive. TODO: falta enlace y descripción
-        nombre: "FlexiTeacher",
-        descripcion: "Asistente de inteligencia artificial para docentes.",
-        url: "",
+        nombre: "CK-12",
+        descripcion:
+          "Plataforma con tutor de IA (Flexi), libros digitales, simulaciones y práctica adaptativa de ciencias y matemáticas.",
+        url: "https://www.ck12.org/teacher/",
+        etiqueta: "Gratis",
       },
       {
-        // De la lista de videos de Drive. TODO: confirmar enlace y descripción
         nombre: "Códigos cortos ChatGPT",
         descripcion:
           "Atajos (códigos cortos) para pedirle a ChatGPT tareas frecuentes de clase de forma rápida y ordenada.",
@@ -146,6 +146,14 @@ export const categoriasIA: CategoriaIA[] = [
         nombre: "Ideogram",
         descripcion: "Imágenes con texto legible integrado, útil para infografías.",
         url: "https://ideogram.ai/",
+        etiqueta: "Freemium",
+      },
+      {
+        nombre: "Storyboard con ChatGPT",
+        slug: "storyboard-con-chatgpt",
+        descripcion:
+          "Crea guiones gráficos (storyboards) con ChatGPT para planear historias, videos y secuencias de clase.",
+        url: "https://chatgpt.com/",
         etiqueta: "Freemium",
       },
     ],

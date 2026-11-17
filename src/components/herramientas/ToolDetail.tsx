@@ -113,6 +113,18 @@ export default function ToolDetail({ herramienta }: { herramienta: HerramientaUb
               </p>
             )}
 
+            {tool.app && (
+              <a
+                href={tool.app}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-3 flex w-full items-center justify-between gap-3 border border-brand px-5 py-3.5 font-mono text-xs uppercase tracking-wide text-brand transition-colors hover:bg-brand hover:text-board"
+              >
+                Descargar la app
+                <span aria-hidden="true">↓</span>
+              </a>
+            )}
+
             {videoPrincipal && (
               <>
                 <div className="my-8 h-px bg-line" />
