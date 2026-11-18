@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { asset } from "@/lib/rutas";
 import { sitio } from "@/data/sitio";
+import BotonInstalar from "@/components/pwa/BotonInstalar";
 
 const navigation = [
   { href: "/", label: "Inicio" },
@@ -64,6 +65,9 @@ export default function Navbar() {
             ))}
           </ul>
         </nav>
+
+        {/* Instalar CHIA (solo aparece si el navegador lo permite) */}
+        <BotonInstalar className="ml-auto mr-3 md:ml-4 md:mr-0" />
 
         {/* Botón hamburguesa, solo móvil */}
         <button

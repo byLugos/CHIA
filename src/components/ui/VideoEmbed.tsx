@@ -1,6 +1,7 @@
 import type { VideoDocente } from "@/data/videos";
 import { drive, youtube } from "@/lib/media";
 import { sitio } from "@/data/sitio";
+import VideoSinConexion from "@/components/pwa/VideoSinConexion";
 
 // Reproductor: usa YouTube si existe; si no, el reproductor de Google Drive.
 export default function VideoEmbed({ video }: { video: VideoDocente }) {
@@ -12,6 +13,7 @@ export default function VideoEmbed({ video }: { video: VideoDocente }) {
 
   return (
     <div className="relative aspect-video overflow-hidden bg-ink">
+      {src && <VideoSinConexion />}
       {src ? (
         <iframe
           className="absolute inset-0 h-full w-full"

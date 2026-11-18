@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import type { Tool } from "@/data/areas";
 import { cn } from "@/lib/utils";
@@ -32,6 +35,8 @@ function iconoDelSitio(url: string): string | null {
 export default function ToolLogo({ tool, tamano = "md", className }: ToolLogoProps) {
   const { caja, px } = tamanos[tamano];
   const fuente = tool.logo ? asset(tool.logo) : iconoDelSitio(tool.url);
+  // Si la imagen no carga (sin internet, o el sitio no tiene ícono), se muestra la inicial
+  const [fallo, setFallo] = useState(false);
 
   return (
     <div
@@ -41,13 +46,14 @@ export default function ToolLogo({ tool, tamano = "md", className }: ToolLogoPro
         className,
       )}
     >
-      {fuente ? (
+      {fuente && !fallo ? (
         <Image
           src={fuente}
           alt=""
           width={px}
           height={px}
           className="h-full w-full object-contain"
+          onError={() => setFallo(true)}
         />
       ) : (
         <span
