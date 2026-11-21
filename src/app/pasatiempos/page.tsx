@@ -4,7 +4,7 @@ import Footer from "@/components/layout/Footer";
 import PasatiemposHeader from "@/components/pasatiempos/PasatiemposHeader";
 import PasatiempoCard from "@/components/pasatiempos/PasatiempoCard";
 
-import { pasatiempos } from "@/data/pasatiempos";
+import { pasatiempos } from "@/lib/visibles";
 
 export default function PasatiemposPage() {
   return (

@@ -1,8 +1,8 @@
 // Índice central de herramientas: une Áreas, Universo IA y Pasatiempos
 // para que cada herramienta tenga su propia página y sus videos.
-import { areas, type Area, type Tool } from "@/data/areas";
-import { categoriasIA } from "@/data/universoIA";
-import { pasatiempos } from "@/data/pasatiempos";
+import type { Area, Tool } from "@/data/areas";
+import { areas, categoriasIA, pasatiempos } from "@/lib/visibles";
+import { getToolSlug, slugify } from "@/lib/slug";
 import { videos, type VideoDocente } from "@/data/videos";
 
 export type Seccion = "areas" | "universo-ia" | "pasatiempos";
@@ -18,18 +18,7 @@ export type HerramientaUbicada = {
   subgrupo?: string;
 };
 
-export function slugify(texto: string): string {
-  return texto
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-}
-
-export function getToolSlug(tool: Tool): string {
-  return tool.slug ?? slugify(tool.nombre);
-}
+export { getToolSlug, slugify };
 
 export function herramientasDeArea(
   area: Area,

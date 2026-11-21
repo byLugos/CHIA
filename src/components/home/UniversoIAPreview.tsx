@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { categoriasIA } from "@/data/universoIA";
+import { categoriasIA } from "@/lib/visibles";
 import SectionHeading from "@/components/ui/SectionHeading";
 
 export default function UniversoIAPreview() {

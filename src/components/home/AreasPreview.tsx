@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { areas } from "@/data/areas";
+import { areas } from "@/lib/visibles";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { getAreaColor } from "@/lib/colores";
 

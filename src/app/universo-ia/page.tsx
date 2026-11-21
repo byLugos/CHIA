@@ -4,7 +4,7 @@ import Footer from "@/components/layout/Footer";
 import UniversoIAHeader from "@/components/universo-ia/UniversoIAHeader";
 import CategoriaIACard from "@/components/universo-ia/CategoriaIACard";
 
-import { categoriasIA } from "@/data/universoIA";
+import { categoriasIA } from "@/lib/visibles";
 
 export default function UniversoIAPage() {
   return (

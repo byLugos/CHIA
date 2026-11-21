@@ -66,12 +66,6 @@ export const areas: Area[] = [
         etiqueta: "Gratis",
       },
       {
-        nombre: "Padlet",
-        descripcion: "Mural colaborativo para debates, fuentes primarias y trabajo en equipo.",
-        url: "https://padlet.com/",
-        etiqueta: "Freemium",
-      },
-      {
         nombre: "Biblioteca Digital Mundial",
         descripcion: "Archivos históricos y culturales digitalizados de todo el mundo.",
         url: "https://www.wdl.org/",
@@ -86,11 +80,10 @@ export const areas: Area[] = [
         etiqueta: "Gratis",
       },
       {
-        // Del PDF de herramientas (#14). TODO: confirmar área y URL
         nombre: "Didactalia",
         descripcion:
           "Comunidad con miles de recursos educativos: mapas interactivos, juegos y actividades para el aula.",
-        url: "https://didactalia.net/",
+        url: "https://didactalia.net/comunidad/materialeducativo",
         etiqueta: "Gratis",
       },
     ],
@@ -199,6 +192,13 @@ export const areas: Area[] = [
         url: "https://languagetool.org/es",
         etiqueta: "Gratis",
       },
+      {
+        // Estaba en Ciencias Sociales; en el Drive está en Español
+        nombre: "Padlet",
+        descripcion: "Mural colaborativo para compartir ideas, textos, imágenes y videos, y trabajar en equipo.",
+        url: "https://es.padlet.com/",
+        etiqueta: "Freemium",
+      },
     ],
   },
   {
@@ -242,11 +242,25 @@ export const areas: Area[] = [
         etiqueta: "Gratis",
       },
       {
-        // TODO: confirmar área (es una biblioteca de cuentos en varios idiomas)
         nombre: "StoryWeaver",
         descripcion:
           "Biblioteca gratuita de cuentos ilustrados en inglés y muchos otros idiomas, para leer, escuchar y traducir.",
         url: "https://storyweaver.org.in/en",
+        etiqueta: "Gratis",
+      },
+      {
+        nombre: "ELLLO",
+        descripcion:
+          "Miles de audios y videos gratuitos con conversaciones reales en inglés de personas de todo el mundo, con transcripción y ejercicios.",
+        url: "https://www.elllo.org/",
+        etiqueta: "Gratis",
+      },
+      {
+        nombre: "LearnEnglish (British Council)",
+        slug: "learnenglish-british-council",
+        descripcion:
+          "Sitio del British Council con lecciones, ejercicios, pódcast y videos para practicar inglés por niveles.",
+        url: "https://learnenglish.britishcouncil.org/",
         etiqueta: "Gratis",
       },
     ],

@@ -74,4 +74,18 @@ export const pasatiempos: Pasatiempo[] = [
     url: "https://play.google.com/store/apps/details?id=com.hecorat.screenrecorder.free",
     etiqueta: "App Android",
   },
+  {
+    nombre: "Flippity",
+    descripcion:
+      "Convierte una hoja de cálculo de Google en juegos y actividades: tarjetas, concursos de preguntas, sopas de letras, bingo y más.",
+    url: "https://www.flippity.net/",
+    etiqueta: "Gratis",
+  },
+  {
+    // TODO: confirmar área y descripción (la lista no indica dónde va)
+    nombre: "Lesson2Play",
+    descripcion: "Convierte tus lecciones en juegos interactivos para repasar en clase.",
+    url: "https://lesson2play.com/",
+    etiqueta: "Freemium",
+  },
 ];

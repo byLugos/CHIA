@@ -3,7 +3,7 @@ import PageShell from "@/components/layout/PageShell";
 import AreasHeader from "@/components/areas/AreasHeader";
 import AreaCard from "@/components/areas/AreaCard";
 
-import { areas } from "@/data/areas";
+import { areas } from "@/lib/visibles";
 
 export const metadata: Metadata = {
   title: "Áreas de aprendizaje",

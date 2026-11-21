@@ -6,7 +6,7 @@ import PageShell from "@/components/layout/PageShell";
 import AreaDetalleHeader from "@/components/areas/AreaDetalleHeader";
 import AreaHerramientas from "@/components/areas/AreaHerramientas";
 
-import { areas, getAreaBySlug } from "@/data/areas";
+import { areas, getAreaBySlug } from "@/lib/visibles";
 
 type Props = { params: Promise<{ area: string }> };
 
