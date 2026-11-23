@@ -14,6 +14,7 @@ const navigation = [
   { href: "/universo-ia", label: "Universo IA" },
   { href: "/pasatiempos", label: "Pasatiempos" },
   { href: "/videos", label: "Videos" },
+  { href: "/recursos", label: "Recursos" },
   { href: "/sobre-chia", label: "Sobre CHIA" },
 ];
 
@@ -51,13 +52,13 @@ export default function Navbar() {
         </Link>
 
         {/* Nav de escritorio */}
-        <nav aria-label="Navegación principal" className="hidden md:block">
-          <ul className="flex items-center gap-1 sm:gap-2">
+        <nav aria-label="Navegación principal" className="hidden lg:block">
+          <ul className="flex items-center gap-1">
             {navigation.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="block px-3 py-2 font-mono text-xs uppercase tracking-wide text-ink-soft transition-colors hover:bg-paper hover:text-brand sm:px-4"
+                  className="block px-3 py-2 font-mono text-xs uppercase tracking-wide text-ink-soft transition-colors hover:bg-paper hover:text-brand xl:px-4"
                 >
                   {item.label}
                 </Link>
@@ -67,7 +68,7 @@ export default function Navbar() {
         </nav>
 
         {/* Instalar CHIA (solo aparece si el navegador lo permite) */}
-        <BotonInstalar className="ml-auto mr-3 md:ml-4 md:mr-0" />
+        <BotonInstalar className="ml-auto mr-3 lg:ml-4 lg:mr-0" />
 
         {/* Botón hamburguesa, solo móvil */}
         <button
@@ -76,7 +77,7 @@ export default function Navbar() {
           aria-expanded={abierto}
           aria-controls="menu-movil"
           aria-label={abierto ? "Cerrar menú" : "Abrir menú"}
-          className="flex h-11 w-11 items-center justify-center border border-line text-ink transition-colors hover:bg-paper md:hidden"
+          className="flex h-11 w-11 items-center justify-center border border-line text-ink transition-colors hover:bg-paper lg:hidden"
         >
           <span className="relative flex h-4 w-5 flex-col justify-between">
             <span
@@ -102,8 +103,8 @@ export default function Navbar() {
       <nav
         id="menu-movil"
         aria-label="Navegación móvil"
-        className={`overflow-hidden border-t border-line bg-board transition-[max-height] duration-300 ease-in-out md:hidden ${
-          abierto ? "max-h-96" : "max-h-0 border-t-0"
+        className={`overflow-hidden border-t border-line bg-board transition-[max-height] duration-300 ease-in-out lg:hidden ${
+          abierto ? "max-h-[28rem]" : "max-h-0 border-t-0"
         }`}
       >
         <ul className="flex flex-col px-6 py-2">
