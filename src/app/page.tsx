@@ -1,7 +1,7 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
-import Hero from "@/components/home/Hero";
+import TesorosChia from "@/components/tesoros/TesorosChia";
 import AreasPreview from "@/components/home/AreasPreview";
 import UniversoIAPreview from "@/components/home/UniversoIAPreview";
 import PasatiemposPreview from "@/components/home/PasatiemposPreview";
@@ -16,7 +16,7 @@ export default function HomePage() {
         <Navbar />
 
         <main>
-          <Hero />
+          <TesorosChia />
           <AreasPreview />
           <UniversoIAPreview />
           <PasatiemposPreview />

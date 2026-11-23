@@ -69,3 +69,91 @@ body {
   background-color: var(--color-paper);
   border: 1px solid var(--color-line);
 }
+/* ═══════════════════════════════════════════════════════════════════════
+   «Los tesoros de CHIA» — portada interactiva (components/tesoros)
+   ═══════════════════════════════════════════════════════════════════════ */
+.tesoros-fondo {
+  background:
+    radial-gradient(ellipse at 50% 55%, rgb(255 236 184 / 0.55), transparent 60%),
+    linear-gradient(180deg, #f8f1e1 0%, #f1e5c9 100%);
+}
+
+/* Tapa del cofre: la cerrada se pliega y la abierta se levanta (bisagra abajo) */
+.cofre-tapa {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  transition: transform 0.45s cubic-bezier(0.55, 0, 0.75, 0.2);
+}
+.cofre-tapa-abierta {
+  transform: scaleY(0);
+  transition: transform 0.6s cubic-bezier(0.2, 0.9, 0.3, 1.15) 0.4s;
+}
+[data-estado="abierta"] .cofre-tapa-cerrada { transform: scaleY(0); }
+[data-estado="abierta"] .cofre-tapa-abierta { transform: scaleY(1); }
+
+/* Luz que sale del cofre */
+.cofre-luz {
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.8s ease 0.6s, transform 1.2s ease 0.6s;
+}
+[data-estado="abierta"] .cofre-luz { opacity: 1; transform: scale(1); }
+.cofre-rayos {
+  background: repeating-conic-gradient(
+    from 180deg at 50% 100%,
+    rgb(255 214 120 / 0.35) 0deg 4deg,
+    transparent 4deg 12deg
+  );
+  -webkit-mask-image: radial-gradient(ellipse at 50% 100%, #000 10%, transparent 70%);
+  mask-image: radial-gradient(ellipse at 50% 100%, #000 10%, transparent 70%);
+  animation: cofre-rayos-girar 30s linear infinite;
+}
+@keyframes cofre-rayos-girar {
+  to { transform: rotate(8deg); }
+}
+
+/* Los tesoros salen del cofre uno tras otro */
+.tesoro-entrada {
+  animation: tesoro-salir 0.7s cubic-bezier(0.2, 0.9, 0.3, 1.25) both;
+  animation-delay: calc(0.9s + var(--orden) * 0.12s);
+}
+@keyframes tesoro-salir {
+  from { opacity: 0; transform: translateY(60px) scale(0.6); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Textos de cada escena */
+.tesoros-aparecer {
+  animation: tesoros-aparecer 0.6s ease both;
+  animation-delay: var(--retraso, 0s);
+}
+@keyframes tesoros-aparecer {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Cinta del título */
+.tesoros-cinta {
+  clip-path: polygon(0 0, 100% 0, 96% 50%, 100% 100%, 0 100%, 4% 50%);
+}
+
+/* El cofre cerrado "respira" para invitar a abrirlo */
+.cofre-invitar {
+  animation: cofre-invitar 3s ease-in-out infinite;
+}
+@keyframes cofre-invitar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* Sin animaciones si la persona lo pidió en su sistema */
+@media (prefers-reduced-motion: reduce) {
+  .cofre-tapa, .cofre-tapa-abierta, .cofre-luz { transition: none; }
+  .cofre-rayos, .cofre-invitar, .tesoro-entrada, .tesoros-aparecer { animation: none; }
+}
+
+/* Si el cofre ya se abrió en esta visita, aparece abierto sin animación */
+[data-instantaneo="true"] .cofre-tapa,
+[data-instantaneo="true"] .cofre-luz { transition: none; }
+[data-instantaneo="true"] .tesoro-entrada,
+[data-instantaneo="true"] .tesoros-aparecer { animation: none; }
