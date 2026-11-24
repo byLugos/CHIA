@@ -4,6 +4,15 @@ import ContadorVisitas from "@/components/layout/ContadorVisitas";
 import { enlaceCorreo, sitio } from "@/data/sitio";
 import { asset } from "@/lib/rutas";
 
+// Fecha y hora de la publicación (hora de Colombia), definida en next.config.ts
+const versionPublicada = process.env.NEXT_PUBLIC_VERSION
+  ? new Intl.DateTimeFormat("es-CO", {
+      dateStyle: "medium",
+      timeStyle: "short",
+      timeZone: "America/Bogota",
+    }).format(new Date(process.env.NEXT_PUBLIC_VERSION))
+  : null;
+
 export default function Footer() {
   return (
     <footer className="border-t border-line bg-board">
@@ -50,6 +59,12 @@ export default function Footer() {
           <p className="text-xs text-ink-soft">
             Proyecto CHIA · {sitio.lema} · 2026
           </p>
+
+          {versionPublicada && (
+            <p className="font-mono text-[10px] text-ink-soft/80">
+              Versión del {versionPublicada}
+            </p>
+          )}
         </div>
       </div>
     </footer>
