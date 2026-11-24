@@ -5,9 +5,10 @@
  * Qué hace:
  * - Al instalarse guarda todo el sitio (páginas, estilos, logos, PDF de /public)
  *   para que CHIA se pueda navegar sin internet.
- * - Páginas: primero intenta la red (para ver siempre lo último); si no hay
- *   conexión o tarda más de 4 s, muestra la copia guardada.
- * - Archivos de Next (_next/static): se sirven desde la copia guardada.
+ * - Páginas y datos de navegación: SIEMPRE primero internet (sin caché del
+ *   navegador), así la app instalada muestra lo mismo que el sitio. Si no hay
+ *   conexión o tarda más de 4 s, se muestra la copia guardada.
+ * - Código de Next (_next/static): nombre único por versión → copia guardada.
  * - YouTube, Drive y otros sitios externos no se tocan: necesitan internet.
  */
 const VERSION = "__VERSION__";
@@ -73,10 +74,17 @@ async function guardar(url, respuesta) {
   await cache.put(clave(url), respuesta);
 }
 
-// Páginas: red primero (con tiempo límite), luego copia guardada
-async function pagina(evento) {
+// Pide a internet sin usar la caché HTTP del navegador (GitHub Pages pide
+// guardar 10 min; así siempre llega la última versión publicada)
+function pedirFresco(request) {
+  return fetch(new Request(request, { cache: "no-cache" }));
+}
+
+// Internet primero (con tiempo límite); si no hay, la copia guardada
+async function redPrimero(evento) {
   const { request } = evento;
-  const red = fetch(request).then((respuesta) => {
+  const esPagina = request.mode === "navigate";
+  const red = pedirFresco(request).then((respuesta) => {
     evento.waitUntil(guardar(request.url, respuesta.clone()));
     return respuesta;
   });
@@ -86,13 +94,12 @@ async function pagina(evento) {
   try {
     const primera = await Promise.race([red, limite]);
     if (primera) return primera;
-    // La red está tardando: si hay copia, se muestra ya (la red sigue actualizando)
-    const copia = await buscarEnCache(request.url);
-    return copia || (await red);
+    // Internet está tardando: si hay copia se muestra ya (la red sigue actualizando)
+    return (await buscarEnCache(request.url)) || (await red);
   } catch {
     return (
       (await buscarEnCache(request.url)) ||
-      (await buscarEnCache(PAGINA_SIN_CONEXION)) ||
+      (esPagina ? await buscarEnCache(PAGINA_SIN_CONEXION) : undefined) ||
       Response.error()
     );
   }
@@ -107,23 +114,10 @@ async function estatico(request) {
   return respuesta;
 }
 
-// Lo demás (datos de navegación, imágenes, PDF): copia al instante y se
-// actualiza en segundo plano
-async function actualizable(evento) {
-  const { request } = evento;
-  const copia = await buscarEnCache(request.url);
-  const red = fetch(request)
-    .then(async (respuesta) => {
-      await guardar(request.url, respuesta.clone());
-      return respuesta;
-    })
-    .catch(() => undefined);
-  if (copia) {
-    evento.waitUntil(red);
-    return copia;
-  }
-  return (await red) || Response.error();
-}
+// La página puede preguntar qué versión está activa
+self.addEventListener("message", (evento) => {
+  if (evento.data === "version" && evento.ports[0]) evento.ports[0].postMessage(VERSION);
+});
 
 self.addEventListener("fetch", (evento) => {
   const { request } = evento;
@@ -133,11 +127,9 @@ self.addEventListener("fetch", (evento) => {
   // Solo el propio sitio; YouTube, Drive, GoatCounter, etc. van directo a internet
   if (url.origin !== self.location.origin || !url.pathname.startsWith(`${BASE}/`)) return;
 
-  if (request.mode === "navigate") {
-    evento.respondWith(pagina(evento));
-  } else if (url.pathname.includes("/_next/static/")) {
+  if (url.pathname.includes("/_next/static/")) {
     evento.respondWith(estatico(request));
   } else {
-    evento.respondWith(actualizable(evento));
+    evento.respondWith(redPrimero(evento));
   }
 });
